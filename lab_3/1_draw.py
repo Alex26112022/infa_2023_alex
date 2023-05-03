@@ -12,6 +12,8 @@ def main():
     def png_1():
         pass
 
+    png_1()
+
     pygame.display.update()
     clock = pygame.time.Clock()
     while True:
