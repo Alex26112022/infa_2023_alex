@@ -70,6 +70,8 @@ def main():
                 pygame.quit()
                 sys.exit()
 
+        # pygame.image.save(screen, 'smile.png')  # сохраняет картинку в нужном формате
+
 
 if __name__ == '__main__':
     main()
