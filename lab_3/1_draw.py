@@ -8,8 +8,16 @@ def main():
     pygame.init()
     fps = 30
     screen = pygame.display.set_mode((800, 600))
+    white = (255, 255, 255)
+    black = (0, 0, 0)
+    gray = (125, 125, 125)
+    light_blue = (64, 128, 255)
+    green = (0, 200, 64)
+    yellow = (225, 225, 0)
+    pink = (230, 50, 230)
 
     def png_1():
+        """ Рисует картинку. """
         pass
 
     png_1()
