@@ -4,8 +4,8 @@ from pygame.draw import *
 import random
 
 pygame.init()
-w = 800  # Ширина экрана
-h = 600  # Высота экрана
+w = 1520  # Ширина экрана
+h = 800  # Высота экрана
 fps = 60
 screen = pygame.display.set_mode((w, h))
 clock = pygame.time.Clock()
@@ -18,13 +18,18 @@ green = [0, 200, 64]
 yellow = [225, 225, 0]
 pink = [230, 50, 230]
 red = [255, 0, 0]
+screen.fill(light_blue)
+
+# Параметры шаров
+x = random.randint(40, 1480)
+y = random.randint(40, 760)
+r = random.randint(5, 80)
 
 while True:
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
-
-    screen.fill(light_blue)
+    pygame.draw.circle(screen, red, (x, y), r)
     pygame.display.update()
     clock.tick(fps)
