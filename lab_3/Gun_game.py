@@ -1,4 +1,3 @@
-import sys
 import pygame
 from pygame.draw import *
 import random
@@ -44,6 +43,8 @@ while finished:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             finished = False
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            print('Click')
 
     draw_circle()
     pygame.display.update()
