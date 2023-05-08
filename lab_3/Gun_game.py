@@ -28,11 +28,16 @@ screen.blit(img, (-100, -50))  # копирует пиксели загруже�
 
 def draw_circle():
     """ Рисует шары. """
+    global x, y, r
     x = random.randint(40, 1480)
     y = random.randint(40, 760)
     r = random.randint(5, 80)
     color = colors[random.randint(0, 7)]
     circle(screen, color, (x, y), r)
+
+
+def click(event):
+    print(x, y, r)
 
 
 finished = True
@@ -44,9 +49,10 @@ while finished:
         if event.type == pygame.QUIT:
             finished = False
         elif event.type == pygame.MOUSEBUTTONDOWN:
-            print('Click')
+            print('Click', event.pos)
 
     draw_circle()
+    click(event)
     pygame.display.update()
     screen.blit(img, (-100, -50))  # копирует пиксели загруженного изображения на фон, значения смещают по х, у
 quit()
