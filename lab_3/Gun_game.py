@@ -6,8 +6,10 @@ import random
 pygame.init()
 w = 1520  # Ширина экрана
 h = 800  # Высота экрана
-fps = 60
+fps = 0.5
 screen = pygame.display.set_mode((w, h))
+pygame.display.set_caption('Игра ПОЙМАЙ ШАРИК')
+img = pygame.image.load('кролик4.jpeg')
 clock = pygame.time.Clock()
 
 white = [255, 255, 255]
@@ -18,18 +20,32 @@ green = [0, 200, 64]
 yellow = [225, 225, 0]
 pink = [230, 50, 230]
 red = [255, 0, 0]
-screen.fill(light_blue)
+colors = [white, black, gray, light_blue, green, yellow, pink, red]
+screen.blit(img, (-100, -50))  # копирует пиксели загруженного изображения на фон, значения смещают по х, у
 
-# Параметры шаров
-x = random.randint(40, 1480)
-y = random.randint(40, 760)
-r = random.randint(5, 80)
 
-while True:
+# screen.fill(light_blue)
 
+
+def draw_circle():
+    """ Рисует шары. """
+    x = random.randint(40, 1480)
+    y = random.randint(40, 760)
+    r = random.randint(5, 80)
+    color = colors[random.randint(0, 7)]
+    circle(screen, color, (x, y), r)
+
+
+finished = True
+pygame.display.update()
+
+while finished:
+    clock.tick(fps)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            sys.exit()
-    pygame.draw.circle(screen, red, (x, y), r)
+            finished = False
+
+    draw_circle()
     pygame.display.update()
-    clock.tick(fps)
+    screen.blit(img, (-100, -50))  # копирует пиксели загруженного изображения на фон, значения смещают по х, у
+quit()
