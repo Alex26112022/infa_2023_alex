@@ -5,7 +5,7 @@ import random
 pygame.init()
 w = 1520  # Ширина экрана
 h = 800  # Высота экрана
-fps = 0.5
+fps = 1
 screen = pygame.display.set_mode((w, h))
 pygame.display.set_caption('Игра ПОЙМАЙ ШАРИК')
 img = pygame.image.load('кролик4.jpeg')
@@ -36,7 +36,12 @@ def draw_circle():
     circle(screen, color, (x, y), r)
 
 
-def click(event):
+def click():
+    """ Определяет попадание. """
+    # if (event.x - x) ** 2 + (event.y - y) ** 2 <= r ** 2:
+    #     print('Молодец, попал!!!')
+    # else:
+    #     print('Мимо, целься лучше!')
     print(x, y, r)
 
 
@@ -49,10 +54,11 @@ while finished:
         if event.type == pygame.QUIT:
             finished = False
         elif event.type == pygame.MOUSEBUTTONDOWN:
-            print('Click', event.pos)
+            print('Click!', event.pos)
 
     draw_circle()
-    click(event)
+    click()
     pygame.display.update()
     screen.blit(img, (-100, -50))  # копирует пиксели загруженного изображения на фон, значения смещают по х, у
+
 quit()
