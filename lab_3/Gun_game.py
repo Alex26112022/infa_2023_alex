@@ -8,7 +8,6 @@ h = 800  # Высота экрана
 fps = 1
 screen = pygame.display.set_mode((w, h))
 pygame.display.set_caption('Игра ПОЙМАЙ ШАРИК')
-img = pygame.image.load('кролик4.jpeg')
 clock = pygame.time.Clock()
 
 white = [255, 255, 255]
