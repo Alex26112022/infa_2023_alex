@@ -1,6 +1,6 @@
 import pygame
 from pygame.draw import *
-import random
+from random import randint
 
 pygame.init()
 w = 1520  # Ширина экрана
@@ -19,30 +19,21 @@ green = [0, 200, 64]
 yellow = [225, 225, 0]
 pink = [230, 50, 230]
 red = [255, 0, 0]
-colors = [white, black, gray, light_blue, green, yellow, pink, red]
-screen.blit(img, (-100, -50))  # копирует пиксели загруженного изображения на фон, значения смещают по х, у
+colors = [white, gray, black, green, yellow, pink, red]
+# screen.blit(img, (0, 0))  # копирует пиксели загруженного изображения на фон, значения смещают по х, у
 
 
-# screen.fill(light_blue)
+screen.fill(light_blue)
 
 
 def draw_circle():
     """ Рисует шары. """
-    global x, y, r
-    x = random.randint(40, 1480)
-    y = random.randint(40, 760)
-    r = random.randint(5, 80)
-    color = colors[random.randint(0, 7)]
-    circle(screen, color, (x, y), r)
-
-
-def click():
-    """ Определяет попадание. """
-    # if (event.x - x) ** 2 + (event.y - y) ** 2 <= r ** 2:
-    #     print('Молодец, попал!!!')
-    # else:
-    #     print('Мимо, целься лучше!')
-    print(x, y, r)
+    global px, py, pr
+    px = randint(40, 1480)
+    py = randint(40, 760)
+    pr = randint(5, 80)
+    color = colors[randint(0, 6)]
+    circle(screen, color, (px, py), pr)
 
 
 finished = True
@@ -50,15 +41,23 @@ pygame.display.update()
 
 while finished:
     clock.tick(fps)
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             finished = False
+
         elif event.type == pygame.MOUSEBUTTONDOWN:
             print('Click!', event.pos)
+            if (event.pos[0] - px) ** 2 + (event.pos[1] - py) ** 2 <= pr ** 2:
+                print('Молодец, попал!!!')
+            else:
+                print('Мимо, целься лучше!')
+                print(px, py, pr)
 
     draw_circle()
-    click()
+
     pygame.display.update()
-    screen.blit(img, (-100, -50))  # копирует пиксели загруженного изображения на фон, значения смещают по х, у
+    screen.fill(light_blue)
+    # screen.blit(img, (0, 0))  # копирует пиксели загруженного изображения на фон, значения смещают по х, у
 
 quit()
